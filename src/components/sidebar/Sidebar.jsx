@@ -23,11 +23,14 @@ const Sidebar = () => {
       <div className="center">
         <ul>
           <li>
-            <DashboardIcon />
+            <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
           <li>
-            {" "}
+            <PersonOutlineIcon className="icon" />
+            <span>Users</span>
+          </li>
+          <li>
             <StoreIcon className="icon" />
             <span>Products</span>
           </li>
