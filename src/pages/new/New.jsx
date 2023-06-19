@@ -1,23 +1,27 @@
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./new.scss";
+import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+import { useState } from "react";
 
-const New = () => {
+const New = ({ inputs, title }) => {
+  const [file, setFile] = useState("");
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Add New User</h1>
+          <h1>{title}</h1>
         </div>
         <div className="bottom">
           <div className="left">
             <img
+              className="img"
               src={
                 file
                   ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                  : "https://besthqwallpapers.com/Uploads/3-10-2019/107173/los-angeles-skyscrapers-la-cityscape-evening-sunset.jpg"
               }
               alt=""
             />
@@ -25,9 +29,32 @@ const New = () => {
           <div className="right">
             <form action="">
               <div className="formInput">
-                <label htmlFor="Username"></label>
-                <input type="text" name="" id="" placeholder="John Doe" />
+                <label htmlFor="file">
+                  Image:
+                  <DriveFolderUploadOutlinedIcon className="icon" />
+                </label>
+                <input
+                  onChange={(e) => setFile(e.target.files[0])}
+                  type="file"
+                  name=""
+                  id="file"
+                  style={{ display: "none" }}
+                />
               </div>
+
+              {inputs.map((input) => (
+                <div className="formInput" key={input.id}>
+                  <label htmlFor="">{input.label}</label>
+                  <input
+                    type={input.type}
+                    name=""
+                    id=""
+                    placeholder={input.placeholder}
+                  />
+                </div>
+              ))}
+
+              <button>Send</button>
             </form>
           </div>
         </div>
