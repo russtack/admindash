@@ -12,13 +12,18 @@ import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSyst
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { DarkModeContext } from "../../context/darkModeContext";
 
 const Sidebar = () => {
+  const { dispatch } = useContext(DarkModeContext);
   return (
     <div className="sidebar">
       <div className="top">
-        <spam className="logo">Adminboard</spam>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">Adminboard</span>
+        </Link>
       </div>
       <div className="center">
         <ul>
@@ -28,11 +33,15 @@ const Sidebar = () => {
           </li>
           <li>
             <PersonOutlineIcon className="icon" />
-            <span>Users</span>
+            <Link to="/users" style={{ textDecoration: "none" }}>
+              <span>Users</span>
+            </Link>
           </li>
           <li>
             <StoreIcon className="icon" />
-            <span>Products</span>
+            <Link to="/products" style={{ textDecoration: "none" }}>
+              <span>Products</span>
+            </Link>
           </li>
           <li>
             <CreditCardIcon className="icon" />
@@ -47,7 +56,6 @@ const Sidebar = () => {
             <span>Stats</span>
           </li>
           <li>
-            {" "}
             <NotificationsNoneIcon className="icon" />
             <span>Notifications</span>
           </li>
@@ -74,8 +82,14 @@ const Sidebar = () => {
         </ul>
       </div>
       <div className="bottom">
-        <div className="colorOption"></div>
-        <div className="colorOption"></div>
+        <div
+          className="colorOption"
+          onClick={() => dispatch({ type: "LIGHT" })}
+        ></div>
+        <div
+          className="colorOption"
+          onClick={() => dispatch({ type: "DARK" })}
+        ></div>
       </div>
     </div>
   );

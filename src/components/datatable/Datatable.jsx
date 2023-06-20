@@ -37,7 +37,11 @@ const Datatable = () => {
     <div className="datatable">
       <div className="datatableTitle">
         Add New User
-        <Link to="/users/new" className="link">
+        <Link
+          to="/users/new"
+          className="link"
+          style={{ textDecoration: "none" }}
+        >
           Add New
         </Link>
       </div>
